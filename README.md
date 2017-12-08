@@ -5,10 +5,17 @@ These documents are based on the `Gray/Black Hat Python/C#` series of books. I l
 
 ## Table of Contents
 
-- [01 - Setting up a Go development environment](01.md)
-- [02 - Basics - incomplete](02.md)
+- [01 - Setting up a Go development environment](content/01.md)
+- [02 - Basics](content/02.0.md)
+    + [02.1 - Packages, functions, variables, basic types, casting and constants](content/02.1.md)
+    + [02.2 - for, if, else, switch and defer](content/02.2.md)
+    + [02.3 - Pointers, structs, arrays, slices, maps and range](content/02.3.md)
+    + [02.4 - Methods and interfaces - incomplete](content/02.4.md)
 
 ## Code
+
+- [01 - Setting up a Go development environment](code/01)
+- [02 - Basics](code/02)
 
 ### FAQ
 
@@ -24,7 +31,7 @@ There's a book named [Black Hat Go][black-hat-go] by No Starch in production. Lo
 But the book is not out yet. Today is December 6th 2017 and the book is marked for release in August 2018. The webpage does not have any released chapters or material. We can assume it's going to be similar to the other `gray|black hat` books. This repository and that book are inevitably going to have a lot of overlap. Think of this as warm up while we wait.
 
 **Rewrite in Rust/Haskell**
-Honestly I will be very much interested in a similar guide for Rust/Haskell. Please let me know if you create one.
+Honestly I will be very much interested in a similar guide for Rust/Haskell geared towards security. Please let me know if you create one.
 
 ## Feedback
 I am always interested in feedback. There will be errors and there are always better ways to code. Please create an issue or contact me via other means. If this has helped you please let me know, it helps with the grind.
@@ -38,10 +45,11 @@ The following links helped me get started:
 - A Tour of Go: [https://tour.golang.org/][tour-of-go]
 - Go by Example: [https://gobyexample.com/][go-by-example]
 - Go playground: [https://play.golang.org/][go-playground]
+- Effective Go: [https://golang.org/doc/effective_go.html][effective-go]
 
 ## License
 
-- Code in this repository is opensourced under the [GPLv3](LICENSE).
+- Code in this repository is licensed under the [GPLv3](LICENSE).
 - Non-code content is licensed under [Creative Commons Attribution-NonCommercial 4.0][CC-4] (CC BY-NC 4.0).
 
 <!-- Links -->
@@ -52,4 +60,4 @@ The following links helped me get started:
 [go-by-example]: https://gobyexample.com/
 [go-playground]: https://play.golang.org/
 [CC-4]: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
+[effective-go]: https://golang.org/doc/effective_go.html
