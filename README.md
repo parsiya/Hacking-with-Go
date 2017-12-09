@@ -9,8 +9,8 @@ These documents are based on the `Gray/Black Hat Python/C#` series of books. I l
 - [02 - Basics](content/02.0.md)
     + [02.1 - Packages, functions, variables, basic types, casting and constants](content/02.1.md)
     + [02.2 - for, if, else, switch and defer](content/02.2.md)
-    + [02.3 - Pointers, structs, arrays, slices, maps and range](content/02.3.md)
-    + [02.4 - Methods and interfaces - incomplete](content/02.4.md)
+    + [02.3 - Pointers, structs, arrays, slices and range](content/02.3.md)
+    + [02.4 - Methods and interfaces](content/02.4.md)
 
 ## Code
 
@@ -19,22 +19,22 @@ These documents are based on the `Gray/Black Hat Python/C#` series of books. I l
 
 ### FAQ
 
-**Why not use Python?**
+**Why not use Python?**  
 Python reigns supreme in security and for good reason. It's a powerful programming language. There are a lot of supporting libraries out there both in security and in general. However, I think Go has its merits and can occupy a niche.
 
-**Why not use other tutorials?**
+**Why not use other tutorials?**  
 There are a lot of tutorials for Go out there. None are geared towards security professionals. Our needs are different, we want to write quick and dirty scripts that work (hence Python is so successful). Similar guides are available in Python and other programming languages.
 
-**Why not just use Black Hat Go?**
+**Why not just use Black Hat Go?**  
 There's a book named [Black Hat Go][black-hat-go] by No Starch in production. Looking at the author list, I cannot  compete with them in terms of experience and knowledge. That is a proper book with editors and a publisher while I am just some rando learning as I go. It does not take a lot of CPU power to decide the book will be better.
 
-But the book is not out yet. Today is December 6th 2017 and the book is marked for release in August 2018. The webpage does not have any released chapters or material. We can assume it's going to be similar to the other `gray|black hat` books. This repository and that book are inevitably going to have a lot of overlap. Think of this as warm up while we wait.
+But the book is not out yet. Today is December 6th 2017 and the book is marked for release in August 2018. The book page does not have any released chapters or material. We can assume it's going to be similar to the other `gray|black hat` books. This repository and that book are inevitably going to have a lot of overlap. Think of this as warm up while we wait.
 
-**Rewrite in Rust/Haskell**
+**Rewrite in Rust/Haskell**  
 Honestly I will be very much interested in a similar guide for Rust/Haskell geared towards security. Please let me know if you create one.
 
 ## Feedback
-I am always interested in feedback. There will be errors and there are always better ways to code. Please create an issue or contact me via other means. If this has helped you please let me know, it helps with the grind.
+I am always interested in feedback. There will be errors and there are always better ways to code. Please create an issue here. If this has helped you please let me know, it helps with the grind.
 
 ## Other resources
 There are tons of Go resources online. I am going to try not to re-hash what has been already created. Hacking with Go is not meant to be self-contained. When in doubt, use one of these resources or just search.
@@ -49,7 +49,7 @@ The following links helped me get started:
 
 ## License
 
-- Code in this repository is licensed under the [GPLv3](LICENSE).
+- Code in this repository is licensed under [GPLv3](LICENSE).
 - Non-code content is licensed under [Creative Commons Attribution-NonCommercial 4.0][CC-4] (CC BY-NC 4.0).
 
 <!-- Links -->
