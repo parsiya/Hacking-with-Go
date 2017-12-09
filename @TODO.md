@@ -7,3 +7,6 @@
 - Encryption/Decryption chapter.
 - Encoding/Decoding chapter.
 - Byte manipulation chapter.
+~~- Add `fmt.scan` examples to `02.5`.~~
+- Add error handling to `02.4`.
+- Add raw strings to `02.1`.

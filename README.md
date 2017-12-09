@@ -11,7 +11,7 @@ These documents are based on the `Gray/Black Hat Python/C#` series of books. I l
     + [02.2 - for, if, else, switch and defer](content/02.2.md)
     + [02.3 - Pointers, structs, arrays, slices and range](content/02.3.md)
     + [02.4 - Methods and interfaces](content/02.4.md)
-    + [02.5 - Printf and maps](content/02.5.md)
+    + [02.5 - Printf, Scanf, bufio readers and maps](content/02.5.md)
 
 ## Code
 
@@ -32,7 +32,7 @@ There's a book named [Black Hat Go][black-hat-go] by No Starch in production. Lo
 But the book is not out yet. Today is December 6th 2017 and the book is marked for release in August 2018. The book page does not have any released chapters or material. We can assume it's going to be similar to the other `gray|black hat` books. This repository and that book are inevitably going to have a lot of overlap. Think of this as warm up while we wait.
 
 **Rewrite in Rust/Haskell**  
-Honestly I will be very much interested in a similar guide for Rust/Haskell geared towards security. Please let me know if you create one.
+Honestly I will be very much interested in a similar guide for Rust/Haskell geared for security people. Please let me know if you create one.
 
 ## Feedback
 I am always interested in feedback. There will be errors and there are always better ways to code. Please create an issue here. If this has helped you please let me know, it helps with the grind.
