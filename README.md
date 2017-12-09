@@ -11,6 +11,7 @@ These documents are based on the `Gray/Black Hat Python/C#` series of books. I l
     + [02.2 - for, if, else, switch and defer](content/02.2.md)
     + [02.3 - Pointers, structs, arrays, slices and range](content/02.3.md)
     + [02.4 - Methods and interfaces](content/02.4.md)
+    + [02.5 - Printf and maps](content/02.5.md)
 
 ## Code
 
