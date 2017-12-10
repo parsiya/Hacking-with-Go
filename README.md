@@ -13,11 +13,14 @@ These documents are based on the `Gray/Black Hat Python/C#` series of books. I l
     + [02.4 - Methods and interfaces](content/02.4.md)
     + [02.5 - Printf, Scanf, bufio readers and maps](content/02.5.md)
     + [02.6 - Goroutines and channels](content/02.6.md)
+- [03 - Go networking](content/03.0.md)
+    + [03.1 - Basic TCP and UDP clients](content/03.1.md)
 
 ## Code
 
 - [01 - Setting up a Go development environment](code/01)
 - [02 - Basics](code/02)
+- [03 - Go networking](code/03)
 
 ### FAQ
 
