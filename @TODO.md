@@ -8,6 +8,6 @@
 - Encoding/Decoding chapter.
 - Byte manipulation chapter.
 ~~- Add `fmt.scan` examples to `02.5`.~~
-- Add error handling to `02.4`.
+~~- Add error handling to `02.4`.~~
 ~~- Add raw strings to `02.1`.~~
 - Add defer example to the end of `02.2`.
