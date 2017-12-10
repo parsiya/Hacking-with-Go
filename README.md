@@ -12,6 +12,7 @@ These documents are based on the `Gray/Black Hat Python/C#` series of books. I l
     + [02.3 - Pointers, structs, arrays, slices and range](content/02.3.md)
     + [02.4 - Methods and interfaces](content/02.4.md)
     + [02.5 - Printf, Scanf, bufio readers and maps](content/02.5.md)
+    + [02.6 - Goroutines and channels](content/02.6.md)
 
 ## Code
 

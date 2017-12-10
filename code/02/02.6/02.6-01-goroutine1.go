@@ -2,16 +2,15 @@ package main
 
 import "fmt"
 
-func Count(limit int) {
-	for i := 0; i < limit; i++ {
-		fmt.Printf("Counting: %d\n", i) // Now we know Printf
+func PrintMe(t int, count int) {
+	for i := 0; i < count; i++ {
+		fmt.Printf("Printing from %d\n", t)
 	}
 }
 
 func main() {
 
-	go Count(100)
-	go Count(100)
+	go PrintMe(0, 10)
 
 	fmt.Println("Main finished!")
 }
