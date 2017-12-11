@@ -15,6 +15,7 @@ These documents are based on the `Gray/Black Hat Python/C#` series of books. I l
     + [02.6 - Goroutines and channels](content/02.6.md)
 - [03 - Go networking](content/03.0.md)
     + [03.1 - Basic TCP and UDP clients](content/03.1.md)
+    + [03.2 - TCP servers](content/03.2.md)
 
 ## Code
 

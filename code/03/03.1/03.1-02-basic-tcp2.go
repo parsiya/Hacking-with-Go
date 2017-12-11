@@ -8,8 +8,8 @@ import (
 )
 
 const (
-	TargetHost = "example.com"
-	TargetPort = 80
+	TargetHost = "127.0.0.1"
+	TargetPort = 12345
 )
 
 // CreateAddress converts host and port to host:port.
