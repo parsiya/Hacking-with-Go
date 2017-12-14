@@ -14,7 +14,7 @@ These documents are based on the `Gray/Black Hat Python/C#` series of books. I l
     + [02.5 - Printf, Scanf, bufio readers and maps](content/02.5.md)
     + [02.6 - Goroutines and channels](content/02.6.md)
 - [03 - Useful Go packages](content/03.0.md)
-    + [03.1 - flag package](content/03.1.md)
+    + [03.1 - flag](content/03.1.md)
 - [04- Go networking](content/04.0.md)
     + [04.1 - Basic TCP and UDP clients](content/04.1.md)
     + [04.2 - TCP servers](content/04.2.md)
