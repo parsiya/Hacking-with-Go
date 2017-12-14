@@ -13,20 +13,23 @@ These documents are based on the `Gray/Black Hat Python/C#` series of books. I l
     + [02.4 - Methods and interfaces](content/02.4.md)
     + [02.5 - Printf, Scanf, bufio readers and maps](content/02.5.md)
     + [02.6 - Goroutines and channels](content/02.6.md)
-- [03 - Go networking](content/03.0.md)
-    + [03.1 - Basic TCP and UDP clients](content/03.1.md)
-    + [03.2 - TCP servers](content/03.2.md)
+- [03 - Useful Go packages](content/03.0.md)
+    + [03.1 - flag package](content/03.1.md)
+- [04- Go networking](content/04.0.md)
+    + [04.1 - Basic TCP and UDP clients](content/04.1.md)
+    + [04.2 - TCP servers](content/04.2.md)
 
 ## Code
 
 - [01 - Setting up a Go development environment](code/01)
 - [02 - Basics](code/02)
-- [03 - Go networking](code/03)
+- [03 - Useful Go packages](code/03)
+- [04 - Go networking](code/04)
 
 ### FAQ
 
 **Why not use Python?**  
-Python reigns supreme in security and for good reason. It's a powerful programming language. There are a lot of supporting libraries out there both in security and in general. However, I think Go has its merits and can occupy a niche.
+Python reigns supreme in security and for good reason. It's a powerful programming language. There are a lot of supporting libraries out there both in security and for general use. However, I think Go has its merits and can occupy a niche.
 
 **Why not use other tutorials?**  
 There are a lot of tutorials for Go out there. None are geared towards security professionals. Our needs are different, we want to write quick and dirty scripts that work (hence Python is so successful). Similar guides are available in Python and other programming languages.
