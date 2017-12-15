@@ -7,7 +7,7 @@ import (
 
 func main() {
 
-	// Declaring flags
+	// Declare flags
 	// Remember, flag methods return pointers
 	ipPtr := flag.String("ip", "127.0.0.1", "target IP")
 
@@ -16,13 +16,13 @@ func main() {
 
 	verbosePtr := flag.Bool("verbose", false, "verbosity")
 
-	// Parsing flags
+	// Parse flags
 	flag.Parse()
 
 	// Hack IP:port
 	fmt.Printf("Hacking %s:%d!\n", *ipPtr, port)
 
-	// Display progression if verbose flag is set
+	// Display progress if verbose flag is set
 	if *verbosePtr {
 		fmt.Printf("Pew pew!\n")
 	}

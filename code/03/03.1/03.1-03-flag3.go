@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-// Declaring flag variables
+// Declare flag variables
 var (
 	ip      string
 	port    int
@@ -13,7 +13,7 @@ var (
 )
 
 func init() {
-	// Declaring flags
+	// Declare flags
 	// Remember, flag methods return pointers
 	flag.StringVar(&ip, "ip", "127.0.0.1", "target IP")
 
@@ -24,13 +24,13 @@ func init() {
 
 func main() {
 
-	// Parsing flags
+	// Parse flags
 	flag.Parse()
 
 	// Hack IP:port
 	fmt.Printf("Hacking %s:%d!\n", ip, port)
 
-	// Display progression if verbose flag is set
+	// Display progress if verbose flag is set
 	if verbose {
 		fmt.Printf("Pew pew!\n")
 	}
