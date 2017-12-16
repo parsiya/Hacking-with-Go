@@ -1,18 +1,23 @@
-// Replace TargetHost and TargetPort with a valid UDP server:port before running
 package main
 
 import (
 	"bufio"
+	"flag"
 	"fmt"
 	"net"
 	"strconv"
 	"time"
 )
 
-const (
-	TargetHost = "127.0.0.1"
-	TargetPort = 80
+var (
+	host string
+	port int
 )
+
+func init() {
+	flag.IntVar(&port, "port", 80, "target port")
+	flag.StringVar(&host, "host", "example.com", "target host")
+}
 
 // CreateAddress converts host and port to host:port.
 func CreateAddress(target string, port int) string {
@@ -24,7 +29,7 @@ func CreateAddress(target string, port int) string {
 func main() {
 
 	// Converting host and port
-	t := CreateAddress(TargetHost, TargetPort)
+	t := CreateAddress(host, port)
 
 	// Create a connection to server with 5 second timeout
 	conn, err := net.DialTimeout("udp", t, 5*time.Second)

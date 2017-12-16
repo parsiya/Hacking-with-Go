@@ -1,18 +1,23 @@
-// Replace TargetHost and TargetPort with a valid UDP server:port before running
 package main
 
 import (
 	"bufio"
+	"flag"
 	"fmt"
 	"net"
 	"strconv"
 	"time"
 )
 
-const (
-	TargetHost = "127.0.0.1"
-	TargetPort = 80
+var (
+	host string
+	port int
 )
+
+func init() {
+	flag.IntVar(&port, "port", 80, "target port")
+	flag.StringVar(&host, "host", "example.com", "target host")
+}
 
 // CreateUDPAddr converts host and port to *UDPAddr
 func CreateUDPAddr(target string, port int) (*net.UDPAddr, error) {
@@ -22,7 +27,7 @@ func CreateUDPAddr(target string, port int) (*net.UDPAddr, error) {
 func main() {
 
 	// Converting host and port
-	a, err := CreateUDPAddr(TargetHost, TargetPort)
+	a, err := CreateUDPAddr(host, port)
 	if err != nil {
 		panic(err)
 	}

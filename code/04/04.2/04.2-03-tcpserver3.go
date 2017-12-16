@@ -1,16 +1,22 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"io"
 	"net"
 	"strconv"
 )
 
-const (
-	BindIP   = "0.0.0.0"
-	BindPort = 12345
+var (
+	bindIP   string
+	bindPort int
 )
+
+func init() {
+	flag.IntVar(&bindPort, "port", 12345, "bind port")
+	flag.StringVar(&bindIP, "ip", "127.0.0.1", "bind IP")
+}
 
 // CreateTCPAddr converts host and port to *TCPAddr
 func CreateTCPAddr(target string, port int) (*net.TCPAddr, error) {
@@ -94,8 +100,10 @@ func handleConnectionLog(conn net.Conn) {
 
 func main() {
 
+	flag.Parse()
+
 	// Converting host and port
-	t, err := CreateTCPAddr(BindIP, BindPort)
+	t, err := CreateTCPAddr(bindIP, bindPort)
 	if err != nil {
 		panic(err)
 	}

@@ -2,15 +2,21 @@ package main
 
 import (
 	"bufio"
+	"flag"
 	"fmt"
 	"net"
 	"strconv"
 )
 
-const (
-	TargetHost = "127.0.0.1"
-	TargetPort = 12345
+var (
+	host string
+	port int
 )
+
+func init() {
+	flag.IntVar(&port, "port", 80, "target port")
+	flag.StringVar(&host, "host", "example.com", "target host")
+}
 
 // CreateAddress converts host and port to host:port.
 func CreateAddress(target string, port int) string {
@@ -21,8 +27,10 @@ func CreateAddress(target string, port int) string {
 
 func main() {
 
+	flag.Parse()
+
 	// Converting host and port
-	t := CreateAddress(TargetHost, TargetPort)
+	t := CreateAddress(host, port)
 
 	// Create a connection to server
 	conn, err := net.Dial("tcp", t)

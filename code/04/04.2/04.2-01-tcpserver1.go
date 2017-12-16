@@ -1,16 +1,22 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"io"
 	"net"
 	"strconv"
 )
 
-const (
-	BindIP   = "0.0.0.0"
-	BindPort = 12345
+var (
+	bindIP   string
+	bindPort int
 )
+
+func init() {
+	flag.IntVar(&bindPort, "port", 12345, "bind port")
+	flag.StringVar(&bindIP, "ip", "127.0.0.1", "bind IP")
+}
 
 // CreateAddress converts host and port to host:port.
 func CreateAddress(target string, port int) string {
@@ -29,8 +35,10 @@ func handleConnectionNoLog(conn net.Conn) {
 
 func main() {
 
+	flag.Parse()
+
 	// Converting host and port
-	t := CreateAddress(BindIP, BindPort)
+	t := CreateAddress(bindIP, bindPort)
 
 	// Listen for connections on BindIP:BindPort
 	ln, err := net.Listen("tcp", t)

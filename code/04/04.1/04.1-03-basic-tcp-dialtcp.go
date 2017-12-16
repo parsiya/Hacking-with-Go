@@ -3,15 +3,21 @@ package main
 
 import (
 	"bufio"
+	"flag"
 	"fmt"
 	"net"
 	"strconv"
 )
 
-const (
-	TargetHost = "example.com"
-	TargetPort = 80
+var (
+	host string
+	port int
 )
+
+func init() {
+	flag.IntVar(&port, "port", 80, "target port")
+	flag.StringVar(&host, "host", "example.com", "target host")
+}
 
 // CreateTCPAddr converts host and port to *TCPAddr
 func CreateTCPAddr(target string, port int) (*net.TCPAddr, error) {
@@ -21,7 +27,7 @@ func CreateTCPAddr(target string, port int) (*net.TCPAddr, error) {
 func main() {
 
 	// Converting host and port
-	a, err := CreateTCPAddr(TargetHost, TargetPort)
+	a, err := CreateTCPAddr(host, port)
 	if err != nil {
 		panic(err)
 	}
