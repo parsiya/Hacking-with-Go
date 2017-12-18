@@ -11,3 +11,4 @@
 ~~- Add error handling to `02.4`.~~
 ~~- Add raw strings to `02.1`.~~
 ~~- Add defer example to the end of `02.2`.~~
+- Create a wav file parser as an example of format RE and parsing with Go.

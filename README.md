@@ -13,6 +13,7 @@ These documents are based on the `Gray/Black Hat Python/C#` series of books. I l
     + [02.4 - Methods and interfaces](content/02.4.md)
     + [02.5 - Printf, Scanf, bufio readers and maps](content/02.5.md)
     + [02.6 - Goroutines and channels](content/02.6.md)
+    + [02.7 - Error handling](content/02.7.md)
 - [03 - Useful Go packages](content/03.0.md)
     + [03.1 - flag](content/03.1.md)
 - [04- Go networking](content/04.0.md)
