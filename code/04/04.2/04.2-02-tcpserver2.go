@@ -55,7 +55,6 @@ func readSocket(conn net.Conn, c chan<- []byte) {
 	}
 }
 
-// defer fmt.Printf("Closed connection from %v\n", conn.RemoteAddr().String())
 // writeSocket reads data from channel and writes it to socket
 func writeSocket(conn net.Conn, c <-chan []byte) {
 

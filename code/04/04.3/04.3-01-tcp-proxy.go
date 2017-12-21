@@ -11,20 +11,23 @@ import (
 var (
 	bindIP   string
 	bindPort int
+	destIP   string
+	destPort int
 )
 
 func init() {
-	flag.IntVar(&bindPort, "port", 12345, "bind port")
-	flag.StringVar(&bindIP, "ip", "127.0.0.1", "bind IP")
+	flag.IntVar(&bindPort, "bindPort", 12345, "bind port")
+	flag.StringVar(&bindIP, "bindIP", "127.0.0.1", "bind IP")
+	flag.IntVar(&destPort, "destPort", 12345, "bind port")
+	flag.StringVar(&destIP, "destIP", "127.0.0.1", "bind IP")
 }
 
-// CreateTCPAddr converts host and port to *TCPAddr
-func CreateTCPAddr(target string, port int) (*net.TCPAddr, error) {
-	return net.ResolveTCPAddr("tcp", target+":"+strconv.Itoa(port))
+// createAddress converts host and port to host:port
+func createAddress(target string, port int) string {
+	return target + ":" + strconv.Itoa(port)
 }
 
 // readSocket reads data from socket if available and passes it to channel
-// Note the directed write-only channel designation
 func readSocket(conn net.Conn, c chan<- []byte) {
 
 	// Create a buffer to hold data
@@ -84,48 +87,59 @@ func writeSocket(conn net.Conn, c <-chan []byte) {
 	}
 }
 
-// handleConnectionLog echoes everything back and logs messages received
-func handleConnectionLog(conn net.Conn) {
+// forwardConnection creates a connection to the server and then passes packets
+func forwardConnection(clientConn net.Conn) {
 
-	// Create buffered channel to pass data around
-	c := make(chan []byte, 2048)
+	// Create server's address
+	t := createAddress(destIP, destPort)
 
-	// Spawn up two goroutines, one for reading and another for writing
+	// Create a connection to server
+	serverConn, err := net.Dial("tcp", t)
+	if err != nil {
+		fmt.Println(err)
+		clientConn.Close()
+		return
+	}
 
-	go readSocket(conn, c)
-	go writeSocket(conn, c)
+	// Client to server channel
+	c2s := make(chan []byte, 2048)
+	// Server to client channel
+	s2c := make(chan []byte, 2048)
+
+	go readSocket(clientConn, c2s)
+	go writeSocket(serverConn, c2s)
+	go readSocket(serverConn, s2c)
+	go writeSocket(clientConn, s2c)
 
 }
-
 func main() {
 
 	flag.Parse()
 
 	// Converting host and port
-	t, err := CreateTCPAddr(bindIP, bindPort)
-	if err != nil {
-		panic(err)
-	}
+	t := createAddress(bindIP, bindPort)
 
 	// Listen for connections on BindIP:BindPort
-	ln, err := net.ListenTCP("tcp", t)
+	ln, err := net.Listen("tcp", t)
 	if err != nil {
 		// If we cannot bind, print the error and quit
 		panic(err)
 	}
 
+	fmt.Printf("Started listening on %v\n", t)
+
 	// Wait for connections
 	for {
 		// Accept a connection
-		conn, err := ln.AcceptTCP()
+		conn, err := ln.Accept()
 		if err != nil {
 			// If there was an error print it and go back to listening
 			fmt.Println(err)
+
 			continue
 		}
-
 		fmt.Printf("Received connection from %v\n", conn.RemoteAddr().String())
 
-		go handleConnectionLog(conn)
+		go forwardConnection(conn)
 	}
 }
