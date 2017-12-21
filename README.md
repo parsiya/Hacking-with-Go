@@ -19,6 +19,7 @@ These documents are based on the `Gray/Black Hat Python/C#` series of books. I l
 - [04- Go networking](content/04.0.md)
     + [04.1 - Basic TCP and UDP clients](content/04.1.md)
     + [04.2 - TCP servers](content/04.2.md)
+    + [04.3 - TCP proxy](content/04.3.md)
 
 ## Code
 
