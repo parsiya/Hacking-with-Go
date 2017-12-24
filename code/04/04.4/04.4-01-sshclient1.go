@@ -1,7 +1,6 @@
 package main
 
 import (
-	// "bufio"
 	"flag"
 	"fmt"
 	"io"
@@ -51,7 +50,7 @@ func main() {
 			ssh.Password(password),
 		},
 		// This callback function validates the server.
-		// Danger! We are ignoring hosts credentials
+		// Danger! We are ignoring host info
 		HostKeyCallback: ssh.InsecureIgnoreHostKey(),
 	}
 
@@ -90,8 +89,7 @@ func main() {
 	// https://github.com/golang/crypto/blob/master/ssh/session.go#L56 or read
 	// the RFC for explanation https://tools.ietf.org/html/rfc4254#section-8
 	termModes := ssh.TerminalModes{
-		ssh.ECHO:  0, // Disable echo
-		ssh.IGNCR: 1, // Ignore carriage return
+		ssh.ECHO: 0, // Disable echo
 	}
 
 	// Request pty
@@ -105,6 +103,12 @@ func main() {
 		os.Exit(2)
 	}
 
+	// Also
+	// if rr = session.RequestPty("vt220", 40, 80, termModes); err != nil {
+	// 	fmt.Println("RequestPty failed", err)
+	// 	os.Exit(2)
+	// }
+
 	// Now we can start a remote shell
 	err = session.Shell()
 	if err != nil {
@@ -112,7 +116,14 @@ func main() {
 		os.Exit(2)
 	}
 
+	// Same as above, a different way to check for errors
+	// if err = session.Shell(); err != nil {
+	// 	fmt.Println("shell failed", err)
+	// 	os.Exit(2)
+	// }
+
 	// Endless loop to capture commands
+	// Note: After exit, we need to ctrl+c to end the application.
 	for {
 		io.Copy(input, os.Stdin)
 	}

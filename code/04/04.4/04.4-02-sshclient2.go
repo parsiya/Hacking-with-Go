@@ -1,7 +1,6 @@
 package main
 
 import (
-	// "bufio"
 	"flag"
 	"fmt"
 	"io"
@@ -107,8 +106,7 @@ func main() {
 	// https://github.com/golang/crypto/blob/master/ssh/session.go#L56 or read
 	// the RFC for explanation https://tools.ietf.org/html/rfc4254#section-8
 	termModes := ssh.TerminalModes{
-		ssh.ECHO:  0, // Disable echo
-		ssh.IGNCR: 1,
+		ssh.ECHO: 0, // Disable echo
 	}
 
 	// Request pty
