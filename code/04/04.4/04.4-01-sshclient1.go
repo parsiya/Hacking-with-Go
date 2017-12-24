@@ -19,6 +19,7 @@ var (
 	serverPort int
 )
 
+// Read flags
 func init() {
 	flag.IntVar(&serverPort, "port", 22, "SSH server port")
 	flag.StringVar(&serverIP, "ip", "127.0.0.1", "SSH server IP")
@@ -49,6 +50,7 @@ func main() {
 		Auth: []ssh.AuthMethod{
 			ssh.Password(password),
 		},
+		// This callback function validates the server.
 		// Danger! We are ignoring hosts credentials
 		HostKeyCallback: ssh.InsecureIgnoreHostKey(),
 	}
@@ -72,7 +74,7 @@ func main() {
 		os.Exit(2)
 	}
 
-	// Close the session
+	// Close the session when we main returns
 	defer session.Close()
 
 	// For an interactive session we must redirect IO
@@ -89,7 +91,7 @@ func main() {
 	// the RFC for explanation https://tools.ietf.org/html/rfc4254#section-8
 	termModes := ssh.TerminalModes{
 		ssh.ECHO:  0, // Disable echo
-		ssh.IGNCR: 1,
+		ssh.IGNCR: 1, // Ignore carriage return
 	}
 
 	// Request pty
