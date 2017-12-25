@@ -7,6 +7,7 @@
 - Encryption/Decryption chapter.
 - Encoding/Decoding chapter.
 - Byte manipulation chapter.
+    + `bytes.Buffer` or better the `bytes` package.
 - ~~Add `fmt.scan` examples to `02.5`.~~
 - ~~Add error handling to `02.4`.~~
 - ~~Add raw strings to `02.1`.~~

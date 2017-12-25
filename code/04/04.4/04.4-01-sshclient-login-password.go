@@ -1,7 +1,8 @@
+// Interactive SSH login with user/pass.
+
 package main
 
 import (
-	"bufio"
 	"flag"
 	"fmt"
 	"io"
@@ -14,45 +15,22 @@ import (
 
 var (
 	username   string
+	password   string
 	serverIP   string
 	serverPort int
 )
 
+// Read flags
 func init() {
 	flag.IntVar(&serverPort, "port", 22, "SSH server port")
 	flag.StringVar(&serverIP, "ip", "127.0.0.1", "SSH server IP")
 	flag.StringVar(&username, "user", "", "username")
+	flag.StringVar(&password, "pass", "", "password")
 }
 
 // createAddress converts host and port to host:port.
 func createAddress(target string, port int) string {
 	return target + ":" + strconv.Itoa(port)
-}
-
-// challenge displays information to user and reads user input from os.Stdin and returns it
-func challenge(user, instruction string, questions []string, echos []bool) (answers []string, err error) {
-	// Print info in the callback function
-	fmt.Println("Info:")
-	fmt.Println("User:", user)
-	fmt.Println("Instruction:", instruction)
-	fmt.Println("questions:", questions)
-	fmt.Println("echos:", echos)
-
-	// Read user input
-
-	// Prompt
-	fmt.Println("Enter:")
-
-	// Create a reader
-	reader := bufio.NewReader(os.Stdin)
-	// Read one line
-	text, err := reader.ReadString('\n')
-	if err != nil {
-		return nil, err
-	}
-
-	// Create []string from input and return
-	return []string{text}, nil
 }
 
 func main() {
@@ -71,9 +49,10 @@ func main() {
 		User: username,
 		// Each config must have one AuthMethod. In this case we use password
 		Auth: []ssh.AuthMethod{
-			ssh.KeyboardInteractive(challenge),
+			ssh.Password(password),
 		},
-		// Ignore host verification
+		// This callback function validates the server.
+		// Danger! We are ignoring host info
 		HostKeyCallback: ssh.InsecureIgnoreHostKey(),
 	}
 
@@ -96,7 +75,7 @@ func main() {
 		os.Exit(2)
 	}
 
-	// Close the session
+	// Close the session when main returns
 	defer session.Close()
 
 	// For an interactive session we must redirect IO
@@ -126,6 +105,12 @@ func main() {
 		os.Exit(2)
 	}
 
+	// Also
+	// if err = session.RequestPty("vt220", 40, 80, termModes); err != nil {
+	// 	fmt.Println("RequestPty failed", err)
+	// 	os.Exit(2)
+	// }
+
 	// Now we can start a remote shell
 	err = session.Shell()
 	if err != nil {
@@ -133,7 +118,14 @@ func main() {
 		os.Exit(2)
 	}
 
+	// Same as above, a different way to check for errors
+	// if err = session.Shell(); err != nil {
+	// 	fmt.Println("shell failed", err)
+	// 	os.Exit(2)
+	// }
+
 	// Endless loop to capture commands
+	// Note: After exit, we need to ctrl+c to end the application.
 	for {
 		io.Copy(input, os.Stdin)
 	}

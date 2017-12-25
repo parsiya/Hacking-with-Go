@@ -1,9 +1,11 @@
+// SSH login with user/pass. Run a command with Run and print output.
+
 package main
 
 import (
+	"bytes"
 	"flag"
 	"fmt"
-	"io"
 	"os"
 	"strconv"
 
@@ -16,6 +18,7 @@ var (
 	password   string
 	serverIP   string
 	serverPort int
+	command    string
 )
 
 // Read flags
@@ -24,6 +27,7 @@ func init() {
 	flag.StringVar(&serverIP, "ip", "127.0.0.1", "SSH server IP")
 	flag.StringVar(&username, "user", "", "username")
 	flag.StringVar(&password, "pass", "", "password")
+	flag.StringVar(&command, "cmd", "", "command to run")
 }
 
 // createAddress converts host and port to host:port.
@@ -73,58 +77,20 @@ func main() {
 		os.Exit(2)
 	}
 
-	// Close the session when we main returns
+	// Close the session when main returns
 	defer session.Close()
 
-	// For an interactive session we must redirect IO
-	session.Stdout = os.Stdout
-	session.Stderr = os.Stderr
-	input, err := session.StdinPipe()
-	if err != nil {
-		fmt.Println("Error redirecting session input", err)
-		os.Exit(2)
+	// Create buffers for stdout and stderr
+	var o, e bytes.Buffer
+
+	session.Stdout = &o
+	session.Stderr = &e
+
+	// Run a command with Run and read stdout and stderr
+	if err := session.Run(command); err != nil {
+		fmt.Println("Error running command", err)
 	}
 
-	// Setup terminal mode when requesting pty. You can see all terminal modes at
-	// https://github.com/golang/crypto/blob/master/ssh/session.go#L56 or read
-	// the RFC for explanation https://tools.ietf.org/html/rfc4254#section-8
-	termModes := ssh.TerminalModes{
-		ssh.ECHO: 0, // Disable echo
-	}
-
-	// Request pty
-	// https://tools.ietf.org/html/rfc4254#section-6.2
-	// First variable is term environment variable value which specifies terminal.
-	// term doesn't really matter here, we will use "vt220".
-	// Next are height and width: (40,80) characters and finall termModes.
-	err = session.RequestPty("vt220", 40, 80, termModes)
-	if err != nil {
-		fmt.Println("RequestPty failed", err)
-		os.Exit(2)
-	}
-
-	// Also
-	// if rr = session.RequestPty("vt220", 40, 80, termModes); err != nil {
-	// 	fmt.Println("RequestPty failed", err)
-	// 	os.Exit(2)
-	// }
-
-	// Now we can start a remote shell
-	err = session.Shell()
-	if err != nil {
-		fmt.Println("shell failed", err)
-		os.Exit(2)
-	}
-
-	// Same as above, a different way to check for errors
-	// if err = session.Shell(); err != nil {
-	// 	fmt.Println("shell failed", err)
-	// 	os.Exit(2)
-	// }
-
-	// Endless loop to capture commands
-	// Note: After exit, we need to ctrl+c to end the application.
-	for {
-		io.Copy(input, os.Stdin)
-	}
+	// Convert buffer to string
+	fmt.Printf("stdout:\n%s\nstderr:\n%s", o.String(), e.String())
 }

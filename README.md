@@ -20,7 +20,7 @@ These documents are based on the `Gray/Black Hat Python/C#` series of books. I l
     + [04.1 - Basic TCP and UDP clients](content/04.1.md)
     + [04.2 - TCP servers](content/04.2.md)
     + [04.3 - TCP proxy](content/04.3.md)
-    + [04.4 - SSH clients - WIP](content/04.4.md)
+    + [04.4 - SSH clients](content/04.4.md)
 
 ## Code
 

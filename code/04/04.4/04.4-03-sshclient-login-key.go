@@ -1,10 +1,12 @@
+// Interactive SSH login with SSH key.
+
 package main
 
 import (
 	"flag"
 	"fmt"
 	"io"
-	"net"
+	"io/ioutil"
 	"os"
 	"strconv"
 
@@ -14,16 +16,17 @@ import (
 
 var (
 	username   string
-	password   string
 	serverIP   string
 	serverPort int
+	pKeyFile   string
 )
 
+// Read flags
 func init() {
 	flag.IntVar(&serverPort, "port", 22, "SSH server port")
 	flag.StringVar(&serverIP, "ip", "127.0.0.1", "SSH server IP")
 	flag.StringVar(&username, "user", "", "username")
-	flag.StringVar(&password, "pass", "", "password")
+	flag.StringVar(&pKeyFile, "pkey", "", "unencrypted private key file")
 }
 
 // createAddress converts host and port to host:port.
@@ -31,31 +34,32 @@ func createAddress(target string, port int) string {
 	return target + ":" + strconv.Itoa(port)
 }
 
-// hostChecker returns a function to be used as callback for HostKeyCallback.
-func hostChecker() ssh.HostKeyCallback {
-	return printServerKey
-}
-
-// printServerKey prints server's info instead of checking it.
-// It's of type HostKeyCallback
-func printServerKey(hostname string, remote net.Addr, key ssh.PublicKey) error {
-	// Just print everything
-	fmt.Printf("Hostname: %v\nRemote address: %v\nServer key: %+v\n",
-		hostname, remote, key)
-	// Return nil so connection can continue without checking the server
-	return nil
-}
-
-type KeyboardInteractiveChallenge func(user, instruction string,
-	questions []string, echos []bool) (answers []string, err error)
-
 func main() {
 	// Parse flags
 	flag.Parse()
 
-	// Check if username has been submitted - password can be empty
+	// Check if username and pKey have been submitted
 	if username == "" {
 		fmt.Println("Must supply username")
+		os.Exit(2)
+	}
+
+	if pKeyFile == "" {
+		fmt.Println("Must supply private key")
+		os.Exit(2)
+	}
+
+	// Now we must read the private key
+	pKey, err := ioutil.ReadFile(pKeyFile)
+	if err != nil {
+		fmt.Println("Failed to read private key from file", err)
+		os.Exit(2)
+	}
+
+	// Create a signer with the private key
+	signer, err := ssh.ParsePrivateKey(pKey)
+	if err != nil {
+		fmt.Println("Failed to parse private key", err)
 		os.Exit(2)
 	}
 
@@ -63,12 +67,13 @@ func main() {
 	config := &ssh.ClientConfig{
 		// Username
 		User: username,
-		// Each config must have one AuthMethod. In this case we use password
+		// Each config must have one AuthMethod. Now we use key
 		Auth: []ssh.AuthMethod{
-			ssh.Password(password),
+			ssh.PublicKeys(signer),
 		},
-		// Check the host
-		HostKeyCallback: hostChecker(),
+		// This callback function validates the server.
+		// Danger! We are ignoring host info
+		HostKeyCallback: ssh.InsecureIgnoreHostKey(),
 	}
 
 	// Server address
@@ -90,7 +95,7 @@ func main() {
 		os.Exit(2)
 	}
 
-	// Close the session
+	// Close the session when main returns
 	defer session.Close()
 
 	// For an interactive session we must redirect IO
@@ -120,6 +125,12 @@ func main() {
 		os.Exit(2)
 	}
 
+	// Also
+	// if err = session.RequestPty("vt220", 40, 80, termModes); err != nil {
+	//  fmt.Println("RequestPty failed", err)
+	//  os.Exit(2)
+	// }
+
 	// Now we can start a remote shell
 	err = session.Shell()
 	if err != nil {
@@ -127,7 +138,14 @@ func main() {
 		os.Exit(2)
 	}
 
+	// Same as above, a different way to check for errors
+	// if err = session.Shell(); err != nil {
+	//  fmt.Println("shell failed", err)
+	//  os.Exit(2)
+	// }
+
 	// Endless loop to capture commands
+	// Note: After exit, we need to ctrl+c to end the application.
 	for {
 		io.Copy(input, os.Stdin)
 	}
