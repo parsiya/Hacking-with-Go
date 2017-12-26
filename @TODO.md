@@ -17,11 +17,12 @@
 ## Books
 Ranked by priority DESC:
 
-- [Black Hat Python][black-hat-python]
-- [Automate the Boring Stuff with Python][automate-boring-stuff]
-- [Gray Hat C#][gray-hat-csharp]
-- [Violent Python][violent-python]
-- [Gray Hat Python][gray-hat-python]
+1. [Black Hat Python][black-hat-python]
+2. [Automate the Boring Stuff with Python][automate-boring-stuff]
+3. [Gray Hat C#][gray-hat-csharp]
+4. [Violent Python][violent-python]
+5. [Gray Hat Python][gray-hat-python]
+6. [Effective Python Penetration Testing][effective-python]
 
 
 <!-- Links -->
@@ -31,3 +32,4 @@ Ranked by priority DESC:
 [violent-python]: http://shop.oreilly.com/product/9781597499576.do
 [gray-hat-csharp]: https://www.nostarch.com/grayhatcsharp
 [gray-hat-python]: https://www.nostarch.com/ghpython.htm
+[effective-python]: https://www.packtpub.com/networking-and-servers/effective-python-penetration-testing
