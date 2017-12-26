@@ -1,0 +1,3 @@
+Use Print to log.
+Ditto for Println.
+Use Printf for format strings. 10 + 20 = 30
