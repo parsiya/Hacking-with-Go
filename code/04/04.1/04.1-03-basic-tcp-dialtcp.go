@@ -6,27 +6,25 @@ import (
 	"flag"
 	"fmt"
 	"net"
-	"strconv"
 )
 
 var (
-	host string
-	port int
+	host, port string
 )
 
 func init() {
-	flag.IntVar(&port, "port", 80, "target port")
+	flag.StringVar(&port, "port", "80", "target port")
 	flag.StringVar(&host, "host", "example.com", "target host")
 }
 
 // CreateTCPAddr converts host and port to *TCPAddr
-func CreateTCPAddr(target string, port int) (*net.TCPAddr, error) {
-	return net.ResolveTCPAddr("tcp", target+":"+strconv.Itoa(port))
+func CreateTCPAddr(target, port string) (*net.TCPAddr, error) {
+	return net.ResolveTCPAddr("tcp", net.JoinHostPort(host, port))
 }
 
 func main() {
 
-	// Converting host and port
+	// Converting host and port to TCP address
 	a, err := CreateTCPAddr(host, port)
 	if err != nil {
 		panic(err)

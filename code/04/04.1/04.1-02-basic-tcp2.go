@@ -5,30 +5,21 @@ import (
 	"flag"
 	"fmt"
 	"net"
-	"strconv"
 )
 
 var (
-	host string
-	port int
+	host, port string
 )
 
 func init() {
-	flag.IntVar(&port, "port", 80, "target port")
+	flag.StringVar(&port, "port", "80", "target port")
 	flag.StringVar(&host, "host", "example.com", "target host")
-}
-
-// CreateAddress converts host and port to host:port.
-func CreateAddress(target string, port int) string {
-	// Running string(port) will return the char for 80 decimal or P
-	// strconv.Itoa converts an int to string (e.g. 80 to "80")
-	return target + ":" + strconv.Itoa(port)
 }
 
 func main() {
 
-	// Converting host and port
-	t := CreateAddress(host, port)
+	// Converting host and port to host:port
+	t := net.JoinHostPort(host, port)
 
 	// Create a connection to server
 	conn, err := net.Dial("tcp", t)

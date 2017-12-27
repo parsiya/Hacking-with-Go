@@ -5,26 +5,17 @@ import (
 	"fmt"
 	"io"
 	"net"
-	"strconv"
 )
 
 var (
-	bindIP   string
-	bindPort int
-	destIP   string
-	destPort int
+	bindIP, bindPort, destIP, destPort string
 )
 
 func init() {
-	flag.IntVar(&bindPort, "bindPort", 12345, "bind port")
+	flag.StringVar(&bindPort, "bindPort", "12345", "bind port")
 	flag.StringVar(&bindIP, "bindIP", "127.0.0.1", "bind IP")
-	flag.IntVar(&destPort, "destPort", 12345, "bind port")
+	flag.StringVar(&destPort, "destPort", "12345", "bind port")
 	flag.StringVar(&destIP, "destIP", "127.0.0.1", "bind IP")
-}
-
-// createAddress converts host and port to host:port
-func createAddress(target string, port int) string {
-	return target + ":" + strconv.Itoa(port)
 }
 
 // readSocket reads data from socket if available and passes it to channel
@@ -90,8 +81,8 @@ func writeSocket(conn net.Conn, c <-chan []byte) {
 // forwardConnection creates a connection to the server and then passes packets
 func forwardConnection(clientConn net.Conn) {
 
-	// Create server's address
-	t := createAddress(destIP, destPort)
+	// Converting host and port to destIP:destPort
+	t := net.JoinHostPort(destIP, destPort)
 
 	// Create a connection to server
 	serverConn, err := net.Dial("tcp", t)
@@ -116,8 +107,8 @@ func main() {
 
 	flag.Parse()
 
-	// Converting host and port
-	t := createAddress(bindIP, bindPort)
+	// Converting host and port to bindIP:bindPort
+	t := net.JoinHostPort(bindIP, bindPort)
 
 	// Listen for connections on BindIP:BindPort
 	ln, err := net.Listen("tcp", t)

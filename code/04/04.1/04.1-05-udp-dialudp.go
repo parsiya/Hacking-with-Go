@@ -5,28 +5,25 @@ import (
 	"flag"
 	"fmt"
 	"net"
-	"strconv"
-	"time"
 )
 
 var (
-	host string
-	port int
+	host, port string
 )
 
 func init() {
-	flag.IntVar(&port, "port", 80, "target port")
+	flag.StringVar(&port, "port", "80", "target port")
 	flag.StringVar(&host, "host", "example.com", "target host")
 }
 
 // CreateUDPAddr converts host and port to *UDPAddr
-func CreateUDPAddr(target string, port int) (*net.UDPAddr, error) {
-	return net.ResolveUDPAddr("udp", target+":"+strconv.Itoa(port))
+func CreateUDPAddr(target, port string) (*net.UDPAddr, error) {
+	return net.ResolveUDPAddr("udp", net.JoinHostPort(host, port))
 }
 
 func main() {
 
-	// Converting host and port
+	// Converting host and port to host:port
 	a, err := CreateUDPAddr(host, port)
 	if err != nil {
 		panic(err)

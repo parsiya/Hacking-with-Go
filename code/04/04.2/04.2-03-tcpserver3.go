@@ -5,22 +5,20 @@ import (
 	"fmt"
 	"io"
 	"net"
-	"strconv"
 )
 
 var (
-	bindIP   string
-	bindPort int
+	bindHost, bindPort string
 )
 
 func init() {
-	flag.IntVar(&bindPort, "port", 12345, "bind port")
-	flag.StringVar(&bindIP, "ip", "127.0.0.1", "bind IP")
+	flag.StringVar(&bindPort, "port", "12345", "bind port")
+	flag.StringVar(&bindHost, "host", "127.0.0.1", "bind host")
 }
 
 // CreateTCPAddr converts host and port to *TCPAddr
-func CreateTCPAddr(target string, port int) (*net.TCPAddr, error) {
-	return net.ResolveTCPAddr("tcp", target+":"+strconv.Itoa(port))
+func CreateTCPAddr(host, port string) (*net.TCPAddr, error) {
+	return net.ResolveTCPAddr("tcp", net.JoinHostPort(host, port))
 }
 
 // readSocket reads data from socket if available and passes it to channel
@@ -101,13 +99,13 @@ func main() {
 
 	flag.Parse()
 
-	// Converting host and port
-	t, err := CreateTCPAddr(bindIP, bindPort)
+	// Converting host and port to TCP address
+	t, err := CreateTCPAddr(bindHost, bindPort)
 	if err != nil {
 		panic(err)
 	}
 
-	// Listen for connections on BindIP:BindPort
+	// Listen for connections on bindHost:bindPort
 	ln, err := net.ListenTCP("tcp", t)
 	if err != nil {
 		// If we cannot bind, print the error and quit

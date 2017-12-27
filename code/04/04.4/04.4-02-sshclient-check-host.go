@@ -8,29 +8,21 @@ import (
 	"io"
 	"net"
 	"os"
-	"strconv"
 
 	// Importing crypto/ssh
 	"golang.org/x/crypto/ssh"
 )
 
 var (
-	username   string
-	password   string
-	serverIP   string
-	serverPort int
+	username, password, serverIP, serverPort string
 )
 
+// Read flags
 func init() {
-	flag.IntVar(&serverPort, "port", 22, "SSH server port")
+	flag.StringVar(&serverPort, "port", "22", "SSH server port")
 	flag.StringVar(&serverIP, "ip", "127.0.0.1", "SSH server IP")
 	flag.StringVar(&username, "user", "", "username")
 	flag.StringVar(&password, "pass", "", "password")
-}
-
-// createAddress converts host and port to host:port.
-func createAddress(target string, port int) string {
-	return target + ":" + strconv.Itoa(port)
 }
 
 // hostChecker returns a function to be used as callback for HostKeyCallback.
@@ -74,7 +66,7 @@ func main() {
 	}
 
 	// Server address
-	t := createAddress(serverIP, serverPort)
+	t := net.JoinHostPort(serverIP, serverPort)
 
 	// Connect to the SSH server
 	sshConn, err := ssh.Dial("tcp", t, config)
