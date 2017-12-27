@@ -40,9 +40,6 @@ func printServerKey(hostname string, remote net.Addr, key ssh.PublicKey) error {
 	return nil
 }
 
-type KeyboardInteractiveChallenge func(user, instruction string,
-	questions []string, echos []bool) (answers []string, err error)
-
 func main() {
 	// Parse flags
 	flag.Parse()
