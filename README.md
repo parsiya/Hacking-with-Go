@@ -22,6 +22,7 @@ These documents are based on the `Gray/Black Hat Python/C#` series of books. I l
     + [04.2 - TCP servers](content/04.2.md)
     + [04.3 - TCP proxy](content/04.3.md)
     + [04.4 - SSH clients](content/04.4.md)
+    + [04.5 - SSH Harvester](content/04.5.md)
 
 ## Code
 
