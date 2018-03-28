@@ -17,12 +17,14 @@ These documents are based on the `Gray/Black Hat Python/C#` series of books. I l
 - [03 - Useful Go packages - WIP](content/03.0.md)
     + [03.1 - flag package](content/03.1.md)
     + [03.2 - log package](content/03.2.md)
-- [04- Go networking](content/04.0.md)
+- [04 - Go networking](content/04.0.md)
     + [04.1 - Basic TCP and UDP clients](content/04.1.md)
     + [04.2 - TCP servers](content/04.2.md)
     + [04.3 - TCP proxy](content/04.3.md)
     + [04.4 - SSH clients](content/04.4.md)
     + [04.5 - SSH Harvester](content/04.5.md)
+- [05 - Parsing Files](content/05.0.md)
+    + [05.1 - Extracting PNG Chunks](content/05.1.md)
 
 ## Code
 
@@ -30,6 +32,7 @@ These documents are based on the `Gray/Black Hat Python/C#` series of books. I l
 - [02 - Basics](code/02)
 - [03 - Useful Go packages](code/03)
 - [04 - Go networking](code/04)
+- [05 - Parsing Files](code/05)
 
 ### FAQ
 
