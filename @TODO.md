@@ -1,7 +1,7 @@
 # TODO list
 
-- Refactor and edit chapter 1.
-- Refactor and edit chapter 2.
+- ~~Refactor and edit chapter 1.~~
+- ~~Refactor and edit chapter 2.~~
 - ~~Split code inside chapter 02 by section.~~
 - Use goroutines to break simple encryption.
 - Encryption/Decryption chapter.
@@ -13,6 +13,8 @@
 - ~~Add raw strings to `02.1`.~~
 - ~~Add defer example to the end of `02.2`.~~
 - Create a wav file parser as an example of format RE and parsing with Go.
+- Adapt the two blog posts about Go-Fuzz into tutorials here.
+- Write an lnk parser.
 
 ## Books
 Ranked by priority DESC:
