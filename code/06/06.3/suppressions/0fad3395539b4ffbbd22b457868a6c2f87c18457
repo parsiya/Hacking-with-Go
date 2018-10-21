@@ -1,0 +1,8 @@
+panic: runtime error: index out of range
+github.com/xor-gate/goexif2/tiff.(*Tag).Int64
+github.com/xor-gate/goexif2/exif.loadSubDir
+github.com/xor-gate/goexif2/exif.(*parser).Parse
+github.com/xor-gate/goexif2/exif.Decode
+github.com/xor-gate/goexif2/exif.Fuzz
+go-fuzz-dep.Main
+main.main

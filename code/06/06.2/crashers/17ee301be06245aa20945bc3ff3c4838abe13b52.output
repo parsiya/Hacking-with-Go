@@ -1,0 +1,24 @@
+1
+80000000
+0.0.0.0
+40
+<nil>
+<nil>
+panic: runtime error: index out of range
+
+goroutine 1 [running]:
+encoding/binary.binary.bigEndian.Uint32(...)
+	C:/Users/Parsia/AppData/Local/Temp/go-fuzz-build049016974/goroot/src/encoding/binary/binary.go:111
+github.com/malfunkt/iprange.(*ipParserImpl).Parse(0xc04209d800, 0x526cc0, 0xc042083040, 0x0)
+	C:/Users/Parsia/AppData/Local/Temp/go-fuzz-build049016974/gopath/src/github.com/malfunkt/iprange/y.go:510 +0x2be1
+github.com/malfunkt/iprange.ipParse(0x526cc0, 0xc042083040, 0xa)
+	C:/Users/Parsia/AppData/Local/Temp/go-fuzz-build049016974/gopath/src/github.com/malfunkt/iprange/y.go:308 +0x8f
+github.com/malfunkt/iprange.ParseList(0xc042075ed0, 0xa, 0xa, 0x200000, 0xc042075ed0, 0xa, 0x8)
+	C:/Users/Parsia/AppData/Local/Temp/go-fuzz-build049016974/gopath/src/github.com/malfunkt/iprange/y.go:63 +0xd6
+github.com/malfunkt/iprange.Fuzz(0x3750000, 0xa, 0x200000, 0x3)
+	C:/Users/Parsia/AppData/Local/Temp/go-fuzz-build049016974/gopath/src/github.com/malfunkt/iprange/fuzz.go:4 +0x84
+go-fuzz-dep.Main(0x5196e0)
+	C:/Users/Parsia/AppData/Local/Temp/go-fuzz-build049016974/goroot/src/go-fuzz-dep/main.go:49 +0xb4
+main.main()
+	C:/Users/Parsia/AppData/Local/Temp/go-fuzz-build049016974/gopath/src/github.com/malfunkt/iprange/go.fuzz.main/main.go:10 +0x34
+exit status 2

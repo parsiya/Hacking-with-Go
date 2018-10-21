@@ -1,0 +1,8 @@
+panic: runtime error: index out of range
+encoding/binary.binary.bigEndian.Uint32
+github.com/malfunkt/iprange.(*ipParserImpl).Parse
+github.com/malfunkt/iprange.ipParse
+github.com/malfunkt/iprange.ParseList
+github.com/malfunkt/iprange.Fuzz
+go-fuzz-dep.Main
+main.main

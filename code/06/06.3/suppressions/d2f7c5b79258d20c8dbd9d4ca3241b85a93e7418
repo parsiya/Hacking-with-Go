@@ -1,0 +1,14 @@
+fatal error: out of memory
+runtime.systemstack_switch
+runtime.mallocgc
+runtime.makeslice
+github.com/xor-gate/goexif2/tiff.(*Tag).convertVals
+github.com/xor-gate/goexif2/tiff.DecodeTag
+github.com/xor-gate/goexif2/tiff.DecodeDir
+github.com/xor-gate/goexif2/tiff.Decode
+github.com/xor-gate/goexif2/exif.Decode
+github.com/xor-gate/goexif2/exif.Fuzz
+go-fuzz-dep.Main
+main.main
+runtime.main
+runtime.goexit

@@ -1,0 +1,18 @@
+panic: runtime error: index out of range
+
+goroutine 1 [running]:
+github.com/xor-gate/goexif2/tiff.(*Tag).Int64(...)
+	C:/Users/Parsia/AppData/Local/Temp/go-fuzz-build214414686/gopath/src/github.com/xor-gate/goexif2/tiff/tag.go:363
+github.com/xor-gate/goexif2/exif.loadSubDir(0xc042080510, 0x547f15, 0xe, 0xc042080390, 0xc042080540, 0xc042089d68)
+	C:/Users/Parsia/AppData/Local/Temp/go-fuzz-build214414686/gopath/src/github.com/xor-gate/goexif2/exif/exif.go:211 +0x704
+github.com/xor-gate/goexif2/exif.(*parser).Parse(0x613170, 0xc042080510, 0xc0420804b0, 0x0)
+	C:/Users/Parsia/AppData/Local/Temp/go-fuzz-build214414686/gopath/src/github.com/xor-gate/goexif2/exif/exif.go:190 +0x174
+github.com/xor-gate/goexif2/exif.Decode(0x560240, 0xc042080480, 0x5ae92f8f, 0x212abedc, 0x1e9999)
+	C:/Users/Parsia/AppData/Local/Temp/go-fuzz-build214414686/gopath/src/github.com/xor-gate/goexif2/exif/exif.go:331 +0x503
+github.com/xor-gate/goexif2/exif.Fuzz(0x38f0000, 0x72, 0x200000, 0xc042047f48)
+	C:/Users/Parsia/AppData/Local/Temp/go-fuzz-build214414686/gopath/src/github.com/xor-gate/goexif2/exif/Fuzz.go:8 +0xba
+go-fuzz-dep.Main(0x550580)
+	C:/Users/Parsia/AppData/Local/Temp/go-fuzz-build214414686/goroot/src/go-fuzz-dep/main.go:49 +0xb4
+main.main()
+	C:/Users/Parsia/AppData/Local/Temp/go-fuzz-build214414686/gopath/src/github.com/xor-gate/goexif2/exif/go.fuzz.main/main.go:10 +0x34
+exit status 2

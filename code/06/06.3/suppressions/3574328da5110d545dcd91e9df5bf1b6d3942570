@@ -1,0 +1,10 @@
+panic: runtime error: makeslice: len out of range
+github.com/xor-gate/goexif2/tiff.(*Tag).convertVals
+github.com/xor-gate/goexif2/tiff.DecodeTag
+github.com/xor-gate/goexif2/tiff.DecodeDir
+github.com/xor-gate/goexif2/exif.loadSubDir
+github.com/xor-gate/goexif2/exif.(*parser).Parse
+github.com/xor-gate/goexif2/exif.Decode
+github.com/xor-gate/goexif2/exif.Fuzz
+go-fuzz-dep.Main
+main.main
