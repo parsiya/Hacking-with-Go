@@ -25,6 +25,10 @@ These documents are based on the `Gray/Black Hat Python/C#` series of books. I l
     + [04.5 - SSH Harvester](content/04.5.md)
 - [05 - Parsing Files](content/05.0.md)
     + [05.1 - Extracting PNG Chunks](content/05.1.md)
+- [06 - Go-Fuzz](content/06.0.md)
+    + [06.1 - Go-Fuzz Quickstart](content/06.1.md)
+    + [06.2 - Fuzzing iprange with Go-Fuzz](content/06.2.md)
+    + [06.2 - Fuzzing goexif2 with Go-Fuzz](content/06.3.md)
 
 ## Code
 
@@ -33,6 +37,7 @@ These documents are based on the `Gray/Black Hat Python/C#` series of books. I l
 - [03 - Useful Go packages](code/03)
 - [04 - Go networking](code/04)
 - [05 - Parsing Files](code/05)
+- [06 - Go-Fuzz](code/06)
 
 ### FAQ
 
@@ -54,7 +59,7 @@ Honestly I will be very much interested in a similar guide for Rust/Haskell gear
 I am always interested in feedback. There will be errors and there are always better ways to code. Please create an issue here. If this has helped you please let me know, it helps with the grind.
 
 ## Other resources
-There are tons of Go resources online. I am going to try not to re-hash what has been already created. Hacking with Go is not meant to be self-contained. When in doubt, use one of these resources or just search.
+There are tons of Go resources online. I am going to try not to re-hash what has been already created. `Hacking with Go` is not meant to be self-contained. When in doubt, use one of these resources or just search.
 
 The following links helped me get started:
 
@@ -63,6 +68,11 @@ The following links helped me get started:
 - Go by Example: [https://gobyexample.com/][go-by-example]
 - Go playground: [https://play.golang.org/][go-playground]
 - Effective Go: [https://golang.org/doc/effective_go.html][effective-go]
+
+Similar resources to `Hacking with Go`:
+
+- [Security with Go][security-with-go] published by Packt: https://github.com/PacktPublishing/Security-with-Go
+- `goHackTools`: https://github.com/dreddsa5dies/goHackTools
 
 ## License
 
@@ -78,3 +88,4 @@ The following links helped me get started:
 [go-playground]: https://play.golang.org/
 [CC-4]: https://creativecommons.org/licenses/by-nc-sa/4.0/
 [effective-go]: https://golang.org/doc/effective_go.html
+[security-with-go]: https://www.packtpub.com/networking-and-servers/security-go
