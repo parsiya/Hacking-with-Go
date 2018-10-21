@@ -1,0 +1,43 @@
+runtime: out of memory: cannot allocate 25769803776-byte block (25832882176 in use)
+fatal error: out of memory
+
+runtime stack:
+runtime.throw(0x547da6, 0xd)
+	C:/Users/Parsia/AppData/Local/Temp/go-fuzz-build214414686/goroot/src/runtime/panic.go:616 +0x88
+runtime.largeAlloc(0x600000000, 0x440001, 0x5f8330)
+	C:/Users/Parsia/AppData/Local/Temp/go-fuzz-build214414686/goroot/src/runtime/malloc.go:828 +0x117
+runtime.mallocgc.func1()
+	C:/Users/Parsia/AppData/Local/Temp/go-fuzz-build214414686/goroot/src/runtime/malloc.go:721 +0x4d
+runtime.systemstack(0x0)
+	C:/Users/Parsia/AppData/Local/Temp/go-fuzz-build214414686/goroot/src/runtime/asm_amd64.s:409 +0x7e
+runtime.mstart()
+	C:/Users/Parsia/AppData/Local/Temp/go-fuzz-build214414686/goroot/src/runtime/proc.go:1175
+
+goroutine 1 [running]:
+runtime.systemstack_switch()
+	C:/Users/Parsia/AppData/Local/Temp/go-fuzz-build214414686/goroot/src/runtime/asm_amd64.s:363 fp=0xc042451790 sp=0xc042451788 pc=0x44cfe0
+runtime.mallocgc(0x600000000, 0x518c80, 0x1, 0x28)
+	C:/Users/Parsia/AppData/Local/Temp/go-fuzz-build214414686/goroot/src/runtime/malloc.go:720 +0x8e1 fp=0xc042451830 sp=0xc042451790 pc=0x40f011
+runtime.makeslice(0x518c80, 0x40000000, 0x40000000, 0x460603, 0xc645b92c60, 0xc645bec1f8)
+	C:/Users/Parsia/AppData/Local/Temp/go-fuzz-build214414686/goroot/src/runtime/slice.go:61 +0x7e fp=0xc042451860 sp=0xc042451830 pc=0x439b3e
+github.com/xor-gate/goexif2/tiff.(*Tag).convertVals(0xc645c12000, 0xc645b92c90, 0xc645bec1f8)
+	C:/Users/Parsia/AppData/Local/Temp/go-fuzz-build214414686/gopath/src/github.com/xor-gate/goexif2/tiff/tag.go:258 +0x88c fp=0xc042451988 sp=0xc042451860 pc=0x4fd63c
+github.com/xor-gate/goexif2/tiff.DecodeTag(0x30a0048, 0xc645b92c90, 0x5605c0, 0x613170, 0x3, 0xc3458b2600, 0x2)
+	C:/Users/Parsia/AppData/Local/Temp/go-fuzz-build214414686/gopath/src/github.com/xor-gate/goexif2/tiff/tag.go:182 +0x623 fp=0xc042451b50 sp=0xc042451988 pc=0x4fc3f3
+github.com/xor-gate/goexif2/tiff.DecodeDir(0x30a0048, 0xc645b92c90, 0x5605c0, 0x613170, 0xc645b92c90, 0x0, 0x0, 0x0)
+	C:/Users/Parsia/AppData/Local/Temp/go-fuzz-build214414686/gopath/src/github.com/xor-gate/goexif2/tiff/tiff.go:150 +0x1c5 fp=0xc042451c18 sp=0xc042451b50 pc=0x5010e5
+github.com/xor-gate/goexif2/tiff.Decode(0x560280, 0xc645b92c90, 0xc645b92c60, 0x560280, 0xc645b92c90)
+	C:/Users/Parsia/AppData/Local/Temp/go-fuzz-build214414686/gopath/src/github.com/xor-gate/goexif2/tiff/tiff.go:99 +0x548 fp=0xc042451d78 sp=0xc042451c18 pc=0x500518
+github.com/xor-gate/goexif2/exif.Decode(0x560240, 0xc645b92c60, 0x5aea8ca7, 0x2cafd418, 0x5dfc57635)
+	C:/Users/Parsia/AppData/Local/Temp/go-fuzz-build214414686/gopath/src/github.com/xor-gate/goexif2/exif/exif.go:316 +0xa19 fp=0xc042451ec8 sp=0xc042451d78 pc=0x504599
+github.com/xor-gate/goexif2/exif.Fuzz(0x39b0000, 0x16d, 0x200000, 0x3)
+	C:/Users/Parsia/AppData/Local/Temp/go-fuzz-build214414686/gopath/src/github.com/xor-gate/goexif2/exif/Fuzz.go:8 +0xba fp=0xc042451f00 sp=0xc042451ec8 pc=0x5026ea
+go-fuzz-dep.Main(0x550580)
+	C:/Users/Parsia/AppData/Local/Temp/go-fuzz-build214414686/goroot/src/go-fuzz-dep/main.go:49 +0xb4 fp=0xc042451f70 sp=0xc042451f00 pc=0x46f9d4
+main.main()
+	C:/Users/Parsia/AppData/Local/Temp/go-fuzz-build214414686/gopath/src/github.com/xor-gate/goexif2/exif/go.fuzz.main/main.go:10 +0x34 fp=0xc042451f88 sp=0xc042451f70 pc=0x506984
+runtime.main()
+	C:/Users/Parsia/AppData/Local/Temp/go-fuzz-build214414686/goroot/src/runtime/proc.go:198 +0x20e fp=0xc042451fe0 sp=0xc042451f88 pc=0x42a9de
+runtime.goexit()
+	C:/Users/Parsia/AppData/Local/Temp/go-fuzz-build214414686/goroot/src/runtime/asm_amd64.s:2361 +0x1 fp=0xc042451fe8 sp=0xc042451fe0 pc=0x44f871
+exit status 2

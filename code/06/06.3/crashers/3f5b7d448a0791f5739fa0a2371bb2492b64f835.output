@@ -1,0 +1,22 @@
+panic: runtime error: makeslice: len out of range
+
+goroutine 1 [running]:
+github.com/xor-gate/goexif2/tiff.(*Tag).convertVals(0xc042056820, 0xc042074450, 0xc04200e2e8)
+	C:/Users/Parsia/AppData/Local/Temp/go-fuzz-build214414686/gopath/src/github.com/xor-gate/goexif2/tiff/tag.go:258 +0x88c
+github.com/xor-gate/goexif2/tiff.DecodeTag(0x2964060, 0xc042074450, 0x5605c0, 0x613170, 0x514c20, 0xc04200e2c4, 0x0)
+	C:/Users/Parsia/AppData/Local/Temp/go-fuzz-build214414686/gopath/src/github.com/xor-gate/goexif2/tiff/tag.go:182 +0x623
+github.com/xor-gate/goexif2/tiff.DecodeDir(0x2964060, 0xc042074450, 0x5605c0, 0x613170, 0xc042074450, 0x0, 0xc042074540, 0x0)
+	C:/Users/Parsia/AppData/Local/Temp/go-fuzz-build214414686/gopath/src/github.com/xor-gate/goexif2/tiff/tiff.go:150 +0x1c5
+github.com/xor-gate/goexif2/exif.loadSubDir(0xc0420744e0, 0x547f15, 0xe, 0xc042074390, 0xc042074510, 0xc04207dd68)
+	C:/Users/Parsia/AppData/Local/Temp/go-fuzz-build214414686/gopath/src/github.com/xor-gate/goexif2/exif/exif.go:220 +0x380
+github.com/xor-gate/goexif2/exif.(*parser).Parse(0x613170, 0xc0420744e0, 0xc042074480, 0x0)
+	C:/Users/Parsia/AppData/Local/Temp/go-fuzz-build214414686/gopath/src/github.com/xor-gate/goexif2/exif/exif.go:190 +0x174
+github.com/xor-gate/goexif2/exif.Decode(0x560240, 0xc042074450, 0x5ae9364a, 0x11afa814, 0x16f365)
+	C:/Users/Parsia/AppData/Local/Temp/go-fuzz-build214414686/gopath/src/github.com/xor-gate/goexif2/exif/exif.go:331 +0x503
+github.com/xor-gate/goexif2/exif.Fuzz(0x3990000, 0xba, 0x200000, 0xc042047f48)
+	C:/Users/Parsia/AppData/Local/Temp/go-fuzz-build214414686/gopath/src/github.com/xor-gate/goexif2/exif/Fuzz.go:8 +0xba
+go-fuzz-dep.Main(0x550580)
+	C:/Users/Parsia/AppData/Local/Temp/go-fuzz-build214414686/goroot/src/go-fuzz-dep/main.go:49 +0xb4
+main.main()
+	C:/Users/Parsia/AppData/Local/Temp/go-fuzz-build214414686/gopath/src/github.com/xor-gate/goexif2/exif/go.fuzz.main/main.go:10 +0x34
+exit status 2
