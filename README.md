@@ -73,6 +73,7 @@ Similar resources to `Hacking with Go`:
 
 - [Security with Go][security-with-go] published by Packt: https://github.com/PacktPublishing/Security-with-Go
 - `goHackTools`: https://github.com/dreddsa5dies/goHackTools
+- [Go programming language secure coding practices guide][go-scp]
 
 ## License
 
@@ -89,3 +90,4 @@ Similar resources to `Hacking with Go`:
 [CC-4]: https://creativecommons.org/licenses/by-nc-sa/4.0/
 [effective-go]: https://golang.org/doc/effective_go.html
 [security-with-go]: https://www.packtpub.com/networking-and-servers/security-go
+[go-scp]: https://github.com/Checkmarx/Go-SCP
