@@ -48,9 +48,11 @@ Python reigns supreme in security and for good reason. It's a powerful programmi
 There are a lot of tutorials for Go out there. None are geared towards security professionals. Our needs are different, we want to write quick and dirty scripts that work (hence Python is so successful). Similar guides are available in Python and other programming languages.
 
 **Why not just use Black Hat Go?**  
-There's a book named [Black Hat Go][black-hat-go] by No Starch in production. Looking at the author list, I cannot  compete with them in terms of experience and knowledge. That is a proper book with editors and a publisher while I am just some rando learning as I go. It does not take a lot of CPU power to decide the book will be better.
+There's a book named [Black Hat Go][black-hat-go] by No Starch in production. Looking at the author list, I cannot compete with them in terms of experience and knowledge. That is a proper book with editors and a publisher while I am just some rando learning as I go. It does not take a lot of CPU power to decide the book will be better.
 
 But the book is not out yet. Today is December 6th 2017 and the book is marked for release in August 2018. The book page does not have any released chapters or material. We can assume it's going to be similar to the other `gray|black hat` books. This repository and that book are inevitably going to have a lot of overlap. Think of this as warm up while we wait.
+
+Update February 2020: Black Hat Go has been released. Please see the code samples at https://github.com/blackhat-go/bhg.
 
 **Rewrite in Rust/Haskell**  
 Honestly I will be very much interested in a similar guide for Rust/Haskell geared for security people. Please let me know if you create one.
